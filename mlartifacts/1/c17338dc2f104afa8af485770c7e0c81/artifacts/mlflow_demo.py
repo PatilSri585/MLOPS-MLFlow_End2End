@@ -17,7 +17,7 @@ y= wine.target
 
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size= 0.30,random_state= 42)
 
-max_depth = 5
+max_depth = 15
 n_estimators = 10
 
 with mlflow.start_run():
