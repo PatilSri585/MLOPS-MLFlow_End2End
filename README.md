@@ -71,9 +71,6 @@ python mlflow_autolog.py
 python mlflow_with_dagshub.py
 ```
 
-### 4. `data.ipynb`
-**Purpose**: Jupyter notebook for data exploration and analysis
-
 ## Requirements
 
 - Python 3.7+
