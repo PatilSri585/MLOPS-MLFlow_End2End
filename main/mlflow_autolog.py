@@ -13,6 +13,7 @@ dagshub.init(repo_owner='PatilSri585', repo_name='MLOPS-MLFlow_End2End', mlflow=
 
 mlflow.set_tracking_uri('https://dagshub.com/PatilSri585/MLOPS-MLFlow_End2End.mlflow')
 mlflow.set_experiment("wine_analysis")
+mlflow.autolog()
 
 wine = load_wine()
 x=wine.data
@@ -25,7 +26,6 @@ n_estimators = 15
 
 with mlflow.start_run():
 
-    # mlflow.autolog()
 
     rf = RandomForestClassifier(max_depth = max_depth, n_estimators=n_estimators)
     rf.fit(x_train,y_train)
@@ -33,10 +33,10 @@ with mlflow.start_run():
     y_pred = rf.predict(x_test)
     accuracy = accuracy_score(y_test,y_pred)
 
-    mlflow.log_metric("accuracy",accuracy)
-    mlflow.log_param("max_depth",max_depth)
-    mlflow.log_param('n_estimators',n_estimators)
-    # mlflow.log_artifact("mlflow_demo.py", artifact_path="main")
+    # mlflow.log_metric("accuracy",accuracy)
+    # mlflow.log_param("max_depth",max_depth)
+    # mlflow.log_param('n_estimators',n_estimators)
+    # # mlflow.log_artifact("mlflow_demo.py", artifact_path="main")
 
     cm = confusion_matrix(y_test,y_pred)
     plt.figure(figsize=(5,5))
@@ -47,10 +47,10 @@ with mlflow.start_run():
 
     plt.savefig('confusion_matrix.png')
 
-    mlflow.log_artifact('confusion_matrix.png')
+    # mlflow.log_artifact('confusion_matrix.png')
     mlflow.log_artifact(__file__)
 
     mlflow.set_tags({'Author':'Harsha','Project':'Demo'})
-    mlflow.sklearn.log_model(rf,'Random-forest-model')
+    # mlflow.sklearn.log_model(rf,'Random-forest-model')
     
     print(accuracy)
